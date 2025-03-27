@@ -1,0 +1,16 @@
+services:
+  linak-controller:
+    build:
+      context: services/linak-controller
+      dockerfile: Dockerfile
+    restart: always
+
+    volumes:
+      # remember paired bluetooth devices
+      - "/var/lib/bluetooth/:/var/lib/bluetooth/:rw"
+
+    # for bluetooth to work
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
