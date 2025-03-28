@@ -1,1 +1,8 @@
+# python
 .venv/
+
+# rust
+/target
+
+# environment
+.env

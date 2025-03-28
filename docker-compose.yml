@@ -1,14 +1,25 @@
 services:
+  # main backend service
+  home-automation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+    - LINAK_SERVICE_URL=${LINAK_SERVICE_URL}
+
+  # --- other services ---
+
   linak-controller:
     build:
       context: services/linak-controller
       dockerfile: Dockerfile
-    restart: always
-
+    restart: unless-stopped
     volumes:
       # remember paired bluetooth devices
       - "/var/lib/bluetooth/:/var/lib/bluetooth/:rw"
-
     # for bluetooth to work
     network_mode: host
     cap_add:

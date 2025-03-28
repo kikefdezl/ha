@@ -4,7 +4,16 @@ Automating stuff around my house.
 
 # Instructions
 
-Must have `make`, `docker` and `docker-compose`. Then just run:
+Requirements: Must have `make`, `docker` and `docker-compose`.
+
+1. Set environment variables
+
+```bash
+cp .env.example .env
+```
+Then fill `.env` with the appropriate values.
+
+2. Build & Run
 
 ```bash
 make build
