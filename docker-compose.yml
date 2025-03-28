@@ -8,6 +8,7 @@ services:
       - "3000:3000"
     restart: unless-stopped
     environment:
+    - HOST_URL=${HOST_URL}
     - LINAK_SERVICE_URL=${LINAK_SERVICE_URL}
 
   # --- other services ---

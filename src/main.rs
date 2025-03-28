@@ -14,9 +14,11 @@ async fn main() {
 
     let app = Router::new()
         .nest("/linak", routes::linak::router())
-        .layer(Extension(config));
+        .layer(Extension(config.clone()));
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    println!("Axum server started, listening at 0.0.0.0:3000");
+    let listener = tokio::net::TcpListener::bind(&config.host_url)
+        .await
+        .unwrap();
+    println!("Axum server started, listening at {}", &config.host_url);
     axum::serve(listener, app).await.unwrap();
 }
