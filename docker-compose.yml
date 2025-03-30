@@ -1,28 +1,11 @@
 services:
-  # main backend service
-  home-automation:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-    environment:
-    - HOST_URL=${HOST_URL}
-    - LINAK_SERVICE_URL=${LINAK_SERVICE_URL}
-
-  # --- other services ---
-
-  linak-controller:
-    build:
-      context: services/linak-controller
-      dockerfile: Dockerfile
-    restart: unless-stopped
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      # remember paired bluetooth devices
-      - "/var/lib/bluetooth/:/var/lib/bluetooth/:rw"
-    # for bluetooth to work
+      - $(PWD)/home-assistant-config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
     network_mode: host
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
