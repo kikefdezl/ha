@@ -1,0 +1,24 @@
+# unwanted HA artifacts
+backups/
+deps/
+tts/
+secrets.yaml
+*.log
+*.log.*
+*.db
+*.db-shm
+*.db-wal
+
+# .storage
+.storage/auth
+.storage/auth_provider.homeassistant
+.storage/backup
+.storage/core.config
+.storage/core.uuid
+.storage/core.restore_state
+.storage/frontend*
+.storage/http
+.storage/http.auth
+.storage/onboarding
+.storage/person
+.storage/trace.saved_traces

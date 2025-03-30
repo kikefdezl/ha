@@ -1,0 +1,25 @@
+sit:
+  sequence:
+  - device_id: cef91fc9123de15ff98807fec6a2902b
+    domain: cover
+    entity_id: fc72569b84b4863637e03842b57a0009
+    type: set_position
+    metadata:
+      secondary: false
+    position: 14
+  alias: Sit
+  description: ''
+  mode: queued
+  max: 10
+stand:
+  mode: queued
+  sequence:
+  - device_id: cef91fc9123de15ff98807fec6a2902b
+    domain: cover
+    entity_id: fc72569b84b4863637e03842b57a0009
+    type: set_position
+    metadata:
+      secondary: false
+    position: 95
+  alias: Stand
+  description: ''
